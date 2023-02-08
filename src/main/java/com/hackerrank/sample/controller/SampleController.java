@@ -14,7 +14,7 @@ public class SampleController {
 	@GetMapping(value = "/defaultHello")
 	public ResponseEntity getHelloMessage(@RequestParam(required = false) String message) {
 		String finalmessage = "Hello World!";
-		if (!message.isEmpty())
+		if (message!=null)
 			finalmessage = "Hello " + message;
 		StringResponse str = new StringResponse(finalmessage);
 		ResponseEntity res = new ResponseEntity(str, HttpStatus.OK);
@@ -25,9 +25,8 @@ public class SampleController {
 	@PostMapping(value = "/customHello")
 	public ResponseEntity PostHelloMessage(@RequestParam(required = false) String message) {
 
-		String finalmessage = "Hello World!";
-		if (!message.isEmpty()) {
-			finalmessage = "Hello " + message;
+		if (message !=null) {
+			String finalmessage = "Custom " + message;
 			StringResponse str = new StringResponse(finalmessage);
 			ResponseEntity res = new ResponseEntity(str, HttpStatus.OK);
 			return res;
